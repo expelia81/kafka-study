@@ -1,0 +1,20 @@
+server:
+  port: 9099
+
+spring:
+  r2dbc:
+    url: r2dbc:pool:mariadb://maestro.okestro.cloud:3306/keycloak
+    username: keycloak
+    password: keycloak
+  kafka:
+    uri: localhost:9092
+    topics:
+      - name: partition-test-topic-2
+        partitions: 10
+        replication-factor: 1
+      - name: test-topic-2 #api ??? ??? ??
+        partitions: 10
+        replication-factor: 1
+    listener:
+      idle-between-polls: 1000 #1?? ? ?? ???
+    bootstrap-servers: ${spring.kafka.uri}
